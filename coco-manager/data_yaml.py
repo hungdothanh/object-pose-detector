@@ -42,9 +42,9 @@ if __name__ == "__main__":
     
     parser.add_argument("-i", "--input_json", dest="input_json",
         help="path to COCO json")
-    parser.add_argument("-t", "--train_path", dest="train_path",
+    parser.add_argument("-t", "--train_dir", dest="train_dir",
         help="path to the folder containing train images")
-    parser.add_argument("-v", "--val_path", dest="val_path",
+    parser.add_argument("-v", "--val_dir", dest="val_dir",
         help="path to the folder containing val images")
     parser.add_argument("-s", "--save_dir", dest="save_dir",
         help="path to save the output data.yaml")

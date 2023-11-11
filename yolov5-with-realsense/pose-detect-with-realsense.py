@@ -377,11 +377,22 @@ class RealSense_App:
 
 
 if __name__ == '__main__':
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Read trained weight.pt and data.yaml file to be passed to the model:")
+        
+    parser.add_argument("-w", "--weight", dest="weight",
+        help="path to trained weight file")
+    parser.add_argument("-d", "--data", dest="data",
+        help="path to the data configuration file")
+
+    args = parser.parse_args()
+
     device = torch.device('cpu')   # Use CPU device
-    model = attempt_load("E:/object-pose-detector/weights/bottle-cup-yolov5s.pt", device=device)
+    model = attempt_load(args.weight, device=device)
 
     # Load the data.yaml file to get class names
-    with open("E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml", 'r') as f:
+    with open(args.data, 'r') as f:
         data = yaml.safe_load(f)
 
     names = data['names']
@@ -397,3 +408,11 @@ if __name__ == '__main__':
        
     else:
         print("Intel RealSense library not found. Make sure it is installed.")
+
+
+    # device = torch.device('cpu')   # Use CPU device
+    # model = attempt_load("E:/object-pose-detector/weights/bottle-cup-yolov5s.pt", device=device)
+
+    # # Load the data.yaml file to get class names
+    # with open("E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml", 'r') as f:
+    #     data = yaml.safe_load(f)

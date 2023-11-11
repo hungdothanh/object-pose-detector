@@ -106,7 +106,7 @@ if __name__ == "__main__":
     
     parser.add_argument("-i", "--input_json", dest="input_json",
         help="path to a json file in coco format")
-    parser.add_argument("-o", "--output_folder", dest="output_folder",
+    parser.add_argument("-s", "--save_dir", dest="save_dir",
         help="path to the folder, in which the downloaded images and their labels are saved")
     
     down_var = input("Do you want to download full set of images? (y/n) ")
@@ -125,7 +125,3 @@ if __name__ == "__main__":
 
 
 
-
-
-
-# python train.py --data /content/drive/MyDrive/dataset/filter_person_bottle/data.yaml --epochs 200 --weights '' --cfg /content/drive/MyDrive/yolov5/models/yolov5n.yaml  --batch-size 32
