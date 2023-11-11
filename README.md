@@ -11,11 +11,11 @@ In this file, an explicit operating guideline for the entire project alongside p
 ## Install
 Clone repo and install [requirements.txt](./yolov5-with-realsense/requirements.txt) in a Python>=3.8.0 environment, including PyTorch>=1.8.
 
-'''bash
+'''
 git clone https://github.com/hungdothanh/object-pose-detector.git  # clone
 cd object-pose-detector/yolov5-with-realsense
 pip install -r requirements.txt  # install
-
+'''
 
 ## Dataset Preparation
 Download the COCO annotation file.
