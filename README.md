@@ -6,11 +6,12 @@ This is an educational project serving as a bachelor's thesis on the topic of 3D
 
 In this file, an explicit operating guideline for the entire project alongside possible outcomes of the current work on image acquisition and object pose detection are represented. 
 
-# Documentations
+<p align="center">Documentations</p>
 
 ## Install
 Clone repo and install [requirements.txt](./yolov5-with-realsense/requirements.txt) in a Python>=3.8.0 environment, including PyTorch>=1.8.
 
+'''bash
 git clone https://github.com/hungdothanh/object-pose-detector.git  # clone
 cd object-pose-detector/yolov5-with-realsense
 pip install -r requirements.txt  # install
@@ -41,6 +42,6 @@ python train.py -- weights "" --cfg yolov5s.yaml --data ".\dataset\data.yaml" --
 ## Inference
 Execute the real-time object detection and 3D pose estimation tasks on the Intel RealSense depth camera by the command below (here pre-trained weight and data configuration file for bottle-cup dataset is imported):
 cd object-pose-detector/yolov5-with-realsense
-python pose-detect-with-realsense.py --weight "object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "data/
+python pose-detect-with-realsense.py --weight "object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "data/bottle-cup-data.yaml"
 
 
