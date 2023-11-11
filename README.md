@@ -1,4 +1,4 @@
-# object-pose-detector
+# 3D Object Pose Detector
 This is an educational project serving as a bachelor's thesis on the topic of 3D object pose measurement, comprising of three main sections:
 - Filtering the annotation JSON file of the COCO dataset for attaining a custom dataset of vital objects only
 - Training the YOLOv5 model on the obtained dataset with fine-tuning parameters for optimized performance and testing on real cases of images captured from the Intel RealSense depth camera.
@@ -6,7 +6,7 @@ This is an educational project serving as a bachelor's thesis on the topic of 3D
 
 In this file, an explicit operating guideline for the entire project alongside possible outcomes of the current work on image acquisition and object pose detection are represented. 
 
-<p align="center"># Documentations</p>
+<h1 align="center">Documentations</h1>
 
 ## Install
 Clone repo and install [requirements.txt](./yolov5-with-realsense/requirements.txt) in a Python>=3.8.0 environment, including PyTorch>=1.8.
