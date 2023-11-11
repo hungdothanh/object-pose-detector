@@ -139,7 +139,7 @@ def detect_with_realsense(pipeline):
     depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.08), cv2.COLORMAP_JET)
 
     # Preprocess the color image to feed into the model    
-    img0 = letterbox(color_image, new_shape=640)[0]     # scale the color image to a new shape
+    img0 = letterbox(color_image, new_shape=480)[0]     # scale the color image to a new shape
     img = img0[:, :, ::-1].transpose(2, 0, 1)    # BGR to RGB and HWC to CHW format
     img = np.ascontiguousarray(img)     # array contiguous in memory (numpy requirement)
     img = torch.from_numpy(img).to(device)      # convert numpy array to torch tensor
@@ -378,11 +378,10 @@ class RealSense_App:
 
 if __name__ == '__main__':
     device = torch.device('cpu')   # Use CPU device
-    # model = attempt_load('e:/filtered-coco-yolov5/yolov5/runs/train/thesis-exp/weights/best.pt', device=device)
-    model = attempt_load('e:/filtered-coco-yolov5/yolov5/weights/cup-bottle.pt', device=device)
+    model = attempt_load("E:/object-pose-detector/weights/bottle-cup-yolov5s.pt", device=device)
 
     # Load the data.yaml file to get class names
-    with open('e:/filtered-coco-yolov5/yolov5/runs/train/thesis-exp/data.yaml', 'r') as f:
+    with open("E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml", 'r') as f:
         data = yaml.safe_load(f)
 
     names = data['names']

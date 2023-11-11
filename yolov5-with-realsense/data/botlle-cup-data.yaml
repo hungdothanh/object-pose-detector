@@ -1,0 +1,8 @@
+names:
+  - bottle
+  - cup
+
+
+nc: 2 
+train: /content/drive/MyDrive/dataset/filtered-COCO/train/images
+val: /content/drive/MyDrive/dataset/filtered-COCO/val/images
