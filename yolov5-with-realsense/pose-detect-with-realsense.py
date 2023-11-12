@@ -410,9 +410,4 @@ if __name__ == '__main__':
         print("Intel RealSense library not found. Make sure it is installed.")
 
 
-    # device = torch.device('cpu')   # Use CPU device
-    # model = attempt_load("E:/object-pose-detector/weights/bottle-cup-yolov5s.pt", device=device)
-
-    # # Load the data.yaml file to get class names
-    # with open("E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml", 'r') as f:
-    #     data = yaml.safe_load(f)
+    # python pose-detect-with-realsense.py --weight "E:/object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml"
