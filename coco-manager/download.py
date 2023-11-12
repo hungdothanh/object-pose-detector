@@ -21,7 +21,7 @@ def xml_to_yolo_bbox(bbox, w, h):
 
 def main(args, download_limit):
     input_json_path = Path(args.input_json)
-    folder_path = Path(args.output_folder)
+    folder_path = Path(args.save_dir)
 
     # initialize COCO api for instance annotations
     coco = COCO(input_json_path)
@@ -108,16 +108,19 @@ if __name__ == "__main__":
         help="path to a json file in coco format")
     parser.add_argument("-s", "--save_dir", dest="save_dir",
         help="path to the folder, in which the downloaded images and their labels are saved")
-    
+    args = parser.parse_args()
+
     down_var = input("Do you want to download full set of images? (y/n) ")
+    download_limit = None
     if down_var == 'n':
         download_limit = input("How many images for each category do you want to download? ")
-        args = parser.parse_args()
-        main(args,download_limit)
     elif down_var == 'y':
-        args = parser.parse_args()
-        main(args)
+        pass
+    else:
+        print("Invalid input. Please try again.")
+        quit()
 
+    main(args,download_limit)
 
 
 
