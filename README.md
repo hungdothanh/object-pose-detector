@@ -72,10 +72,10 @@ python pose-detect-with-realsense-0.py --weights "runs/train/thesis-exp/weights/
 <h1 align="center">Proof of Concept</h1>
 Below are multiple outcomes for a detection of object's pose using the proposed program.
 - A single bottle amongst different indoor objects:
-<img src="./figure/single-bottle-pose_(144vs141actual).png" width="1001" height="602" />
-\
+<img src="./figure/inference/single-bottle-pose_(144vs141actual).png" width="1001" height="602" />
+<br/>
 - A single cup amongst different indoor objects:
-<img src="./figure/single-cup-pose_(72.10vs71actual).png" />
+<img src="./figure/inference/single-cup-pose_(72.10vs71actual).png" />
 \
 - A yellow cup amongst other detected cups:
-<img src="./figure/multi-yellow-cup-pose_(118.8vs116actual).png" />
+<img src="./figure/inference/multi-yellow-cup-pose_(118.8vs116actual).png" />
