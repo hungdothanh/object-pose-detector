@@ -410,6 +410,5 @@ if __name__ == '__main__':
         print("Intel RealSense library not found. Make sure it is installed.")
 
 
-
-    # python pose-detect-with-realsense.py --weights "C:/Bachelor_Thesis/object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "C:/Bachelor_Thesis/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml" --device 0
-    # python pose-detect-with-realsense.py --weights "runs/train/thesis-exp/weights/best.pt" --data "runs/train/thesis-exp/data.yaml" --device 0
+# Run command:
+    # python pose-detect-with-realsense.py --weights "weights/bottle-cup-yolov5s.pt" --data "data/botlle-cup-data.yaml" --device 0
