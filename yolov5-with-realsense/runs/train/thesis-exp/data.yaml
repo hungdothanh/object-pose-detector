@@ -1,0 +1,10 @@
+names:
+- person
+- bottle
+- wine glass
+- cup
+- chair
+
+nc: 5
+train: /content/drive/MyDrive/dataset/filtered-COCO/train/images
+val: /content/drive/MyDrive/dataset/filtered-COCO/val/images
