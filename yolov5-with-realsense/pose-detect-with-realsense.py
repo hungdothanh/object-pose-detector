@@ -11,6 +11,7 @@ from models.experimental import attempt_load
 from utils.general import non_max_suppression, scale_boxes
 from utils.augmentations import letterbox
 from utils.plots import colors
+from utils.torch_utils import select_device
 
 try:
     import pyrealsense2 as rs
@@ -204,7 +205,7 @@ def detect_with_realsense(pipeline):
 
     # Calculate and display FPS
     end_time = time.time()
-    fps = 1 / (end_time - start_time)
+    fps = 1 / (end_time - start_time) if end_time != start_time else 0.000001
     start_time = time.time()
     cv2.putText(color_image, f'FPS: {fps:.0f}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
 
@@ -381,15 +382,14 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Read trained weight.pt and data.yaml file to be passed to the model:")
         
-    parser.add_argument("-w", "--weight", dest="weight",
-        help="path to trained weight file")
-    parser.add_argument("-d", "--data", dest="data",
-        help="path to the data configuration file")
+    parser.add_argument("--weights", help="path to trained weight file")
+    parser.add_argument("--data", help="path to the data configuration file")
+    parser.add_argument("--device", default="", help="cuda device, i.e. 0 or 0,1,2,3 or cpu")
 
     args = parser.parse_args()
 
-    device = torch.device('cpu')   # Use CPU device
-    model = attempt_load(args.weight, device=device)
+    device = select_device(args.device)
+    model = attempt_load(args.weights, device=device)
 
     # Load the data.yaml file to get class names
     with open(args.data, 'r') as f:
@@ -410,4 +410,6 @@ if __name__ == '__main__':
         print("Intel RealSense library not found. Make sure it is installed.")
 
 
-    # python pose-detect-with-realsense.py --weight "E:/object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "E:/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml"
+
+    # python pose-detect-with-realsense.py --weights "C:/Bachelor_Thesis/object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "C:/Bachelor_Thesis/object-pose-detector/yolov5-with-realsense/data/botlle-cup-data.yaml" --device 0
+    # python pose-detect-with-realsense.py --weights "runs/train/thesis-exp/weights/best.pt" --data "runs/train/thesis-exp/data.yaml" --device 0
