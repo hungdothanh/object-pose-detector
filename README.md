@@ -16,7 +16,6 @@ git clone https://github.com/hungdothanh/object-pose-detector.git  # clone
 cd object-pose-detector/yolov5-with-realsense
 pip install -r requirements.txt  # install
 ```
-
 \
 ## Dataset Preparation
 Download the COCO annotation file.
@@ -42,7 +41,6 @@ Create the data configuration file in YAML format for the training process.
 ```
 python data_yaml.py --input_json "./filtered.json" --train_dir "./dataset/train/images" --val_dir "./dataset/val/images" --save_dir "/object-pose-detector/yolov5-with-realsense/data"
 ```
-
 \
 ## Training
 Install the correct pytorch-cuda compatible version (pytorch 2.1.1 for CUDA version 12.0 or 12.1)
@@ -56,7 +54,6 @@ The training from scratch is executed by the following command with the default 
 cd object-pose-detector/yolov5-with-realsense
 python train.py -- weights "" --cfg yolov5s.yaml --data ".\dataset\data.yaml" --batch-size 128 --epochs 100 --img-size 640 --device 0
 ```
-
 \
 ## Inference
 Execute the real-time object detection and 3D pose estimation tasks on the Intel RealSense depth camera by the command below (here pre-trained weight and data configuration file for bottle-cup dataset is imported):
@@ -75,12 +72,10 @@ python pose-detect-with-realsense-0.py --weights "runs/train/thesis-exp/weights/
 <h1 align="center">Proof of Concept</h1>
 Below are multiple outcomes for a detection of object's pose using the proposed program.
 - A single bottle amongst different indoor objects:
-<img src="./figure/single-bottle-pose_(144vs141actual).png" />
-
+<img src="./figure/single-bottle-pose_(144vs141actual).png" width="1001" height="602" />
 \
 - A single cup amongst different indoor objects:
 <img src="./figure/single-cup-pose_(72.10vs71actual).png" />
-
 \
 - A yellow cup amongst other detected cups:
 <img src="./figure/multi-yellow-cup-pose_(118.8vs116actual).png" />
