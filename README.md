@@ -33,6 +33,7 @@ python filter.py --input_json "./instances_train2017.json" --output_json "./filt
 
 Download filtered images from COCO open-source for train and validate set and create labels for object bounding boxes. Noting also there will be asked to download the entire set or only a specified number of images.
 ```
+mkdir dataset/custom-set/train&val
 python download.py --input_json "./filtered.json" --save_dir "./dataset"
 ```
 
@@ -43,17 +44,29 @@ python data_yaml.py --input_json "./filtered.json" --train_dir "./dataset/train/
 
 
 ## Training
+Install the correct pytorch-cuda compatible version (pytorch 2.1.1 for CUDA version 12.0 or 12.1)
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+\\
+
 The training from scratch is executed by the following command with the default YOLOv5s model (can be modified) and data configuration file created above.
+(Note: --device 0 if gpu else cpu)
 ```
 cd object-pose-detector/yolov5-with-realsense
-python train.py -- weights "" --cfg yolov5s.yaml --data ".\dataset\data.yaml" --batch-size 128 --epochs 100 --img-size 480
+python train.py -- weights "" --cfg yolov5s.yaml --data ".\dataset\data.yaml" --batch-size 128 --epochs 100 --img-size 640 --device 0
 ```
 
 ## Inference
 Execute the real-time object detection and 3D pose estimation tasks on the Intel RealSense depth camera by the command below (here pre-trained weight and data configuration file for bottle-cup dataset is imported):
+- GUI compatible for 2 categories 'bottle, cup' only:
 ```
 cd object-pose-detector/yolov5-with-realsense
-python pose-detect-with-realsense.py --weight "object-pose-detector/weights/bottle-cup-yolov5s.pt" --data "data/bottle-cup-data.yaml"
+python pose-detect-with-realsense.py --weight "weights/bottle-cup-yolov5s.pt" --data "data/bottle-cup-data.yaml --device 0"
 ```
 
-
+- GUI compatible for more categories of detections:
+  (The pretrained model being used here comprises of 5 classes 'person, bottle, wine glass, cup, chair')
+```
+python pose-detect-with-realsense-0.py --weights "runs/train/thesis-exp/weights/best.pt" --data "runs/train/thesis-exp/data.yaml" --device 0
+```
